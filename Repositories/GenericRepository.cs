@@ -21,6 +21,7 @@ namespace reposPattern.Repositories
         public void AddRange(IEnumerable<T> entities)
         {
             _context.Set<T>().AddRange(entities);
+            
         }
         
         public IEnumerable<T> GetAll()
@@ -39,6 +40,10 @@ namespace reposPattern.Repositories
 
         {
             _context.Set<T>().RemoveRange(entities);
+        }
+        public IEnumerable<T> Find(Func<T, bool> expression) // T input ; bool output 
+        {
+            return _context.Set<T>().Where(expression);
         }
 
     }

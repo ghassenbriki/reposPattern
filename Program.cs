@@ -19,6 +19,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // services
 
+//This means when we call any method from this interface it will automatically call a method from the class.
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddTransient<IDeveloperRepository, DeveloperRepository>();
 builder.Services.AddTransient<IProjectRepository, ProjectRepository>();

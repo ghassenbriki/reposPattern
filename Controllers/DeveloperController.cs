@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using reposPattern.Entities;
 using reposPattern.Interfaces;
@@ -16,27 +16,31 @@ namespace reposPattern.Controllers
             _unitOfWork = unitOfWork;
         }
 
-       /* public IActionResult GetPopularDevelopers([FromQuery] int count)
-        {
-            var popularDevelopers = _unitOfWork.Developers.GetPopularDevelopers(count);
-            return Ok(popularDevelopers);
-        }*/
+       
 
         [HttpPost]
-        public IActionResult AddDeveloperAndProject()
+        public IActionResult AddDeveloper()
         {
             var developer = new Developer
             {
                 Followers = 35,
                 Name = "Ghassen Briki"
             };
-            var project = new Project
+            /*var project = new Project
             {
                 Name = "Dotnet project"
             };
+            */
             _unitOfWork.Developers.Add(developer);
-            _unitOfWork.Projects.Add(project);
+            //_unitOfWork.Projects.Add(project);
+
+            /*var obj = _unitOfWork.Developers.Find(e => e.Name == "Ghassen Briki");
+            foreach (Developer o in obj)
+                {
+                Console.WriteLine(o.Name);
+            }*/
             _unitOfWork.Complete();
+            _unitOfWork.Dispose();
             return Ok();
         }
     }

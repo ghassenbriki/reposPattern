@@ -7,7 +7,7 @@ namespace reposPattern.Interfaces
     {
         T GetById(int id);
         IEnumerable<T> GetAll();
-        //IEnumerable<T> Find(Expression<func<T, bool="">> expression);
+        IEnumerable<T> Find(Func <T,bool> expression);
         void Add(T entity);
         void AddRange(IEnumerable<T> entities);
         void Remove(T entity);
